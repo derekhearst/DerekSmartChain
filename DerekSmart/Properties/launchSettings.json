@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DerekSmart (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DerekSmart (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
