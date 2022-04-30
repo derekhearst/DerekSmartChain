@@ -26,11 +26,32 @@ namespace DerekSmart
         public MainWindow()
         {
             this.InitializeComponent();
+           MainNavView.SelectedItem= MainNavView.MenuItems[0];
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void MainNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            myButton.Content = "Clicked";
+            FrameNavigationOptions navOptions = new FrameNavigationOptions()
+            {
+                IsNavigationStackEnabled = false,
+
+                
+            };
+
+            switch (args.InvokedItemContainer.Tag.ToString())
+            {
+                case "AddPrinter":                   
+                    ContentFrame.NavigateToType(typeof(Panes.AddPrinter),null, navOptions);                   
+                    break;
+                case "Home":
+                    ContentFrame.NavigateToType(typeof(Panes.HomePage),null,navOptions);
+                    break;
+                default:
+                    break;  
+
+            }
+
+    
         }
     }
 }

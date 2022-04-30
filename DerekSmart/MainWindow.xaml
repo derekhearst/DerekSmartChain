@@ -7,7 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <NavigationView x:Name="MainNavView" PaneDisplayMode="Top" IsBackEnabled="False" IsBackButtonVisible="Collapsed" ItemInvoked="MainNavView_ItemInvoked" SelectionFollowsFocus="Enabled">
+        <NavigationView.MenuItems>            
+            <NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="The home page contains your printers." Tag="Home"/>
+            <NavigationViewItem Content="Add a Printer" ToolTipService.ToolTip="Add a printer to start printing to it." Icon="Add" Tag="AddPrinter"/>
+
+        </NavigationView.MenuItems>
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem Content="User" Icon="OtherUser" Tag="User"/>
+        </NavigationView.FooterMenuItems>
+        <Frame x:Name="ContentFrame"/>
+    </NavigationView>
 </Window>
