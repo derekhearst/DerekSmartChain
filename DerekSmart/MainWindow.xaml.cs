@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -23,35 +25,72 @@ namespace DerekSmart
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        List<DataTypes.PrinterObject> printerObjects = new();
         public MainWindow()
         {
-            this.InitializeComponent();
-           MainNavView.SelectedItem= MainNavView.MenuItems[0];
+            this.InitializeComponent();      
+
+            InitTask();
+            Title = "Derek Smart";
+          
+        }
+
+        public async void InitTask()
+        {
+            StorageFolder localStorage = ApplicationData.Current.LocalFolder;
+            StorageFolder printersFolder = null;
+            try {printersFolder = await localStorage.CreateFolderAsync("Printers"); }
+            catch { printersFolder = await localStorage.GetFolderAsync("Printers"); }
+            List<StorageFile> avaliablePrinters = (await printersFolder.GetFilesAsync()).ToList();
+            foreach (StorageFile avaliablePrinter in avaliablePrinters)
+            {
+                try
+                {
+                    printerObjects.Add(await DataTypes.PrinterObject.ReadFromFile(avaliablePrinter));
+                }
+                catch
+                {
+                    Console.WriteLine($"Error Loading {avaliablePrinter.Name}");
+                }
+            }
+            if(printerObjects.Count == 0)
+            {
+                ContentFrame.Navigate(typeof(Panes.NoPrinter), null, new DrillInNavigationTransitionInfo());
+            }
         }
 
         private void MainNavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            FrameNavigationOptions navOptions = new FrameNavigationOptions()
+            if (args.IsSettingsInvoked)
             {
-                IsNavigationStackEnabled = false,
-
-                
-            };
-
-            switch (args.InvokedItemContainer.Tag.ToString())
+                ContentFrame.Navigate(typeof(Panes.Settings), null, new DrillInNavigationTransitionInfo());
+            }
+            else
             {
-                case "AddPrinter":                   
-                    ContentFrame.NavigateToType(typeof(Panes.AddPrinter),null, navOptions);                   
-                    break;
-                case "Home":
-                    ContentFrame.NavigateToType(typeof(Panes.HomePage),null,navOptions);
-                    break;
-                default:
-                    break;  
-
+                switch (args.InvokedItemContainer.Tag.ToString())
+                {
+                    case "AddPrinter":
+                        ContentFrame.Navigate(typeof(Panes.AddPrinter), null, new DrillInNavigationTransitionInfo());
+                        break;
+                    case "Home":
+                        if (printerObjects.Count == 0)
+                        {
+                            ContentFrame.Navigate(typeof(Panes.NoPrinter), null, new DrillInNavigationTransitionInfo());
+                        }
+                        else
+                        {
+                            ContentFrame.Navigate(typeof(Panes.Home), null, new DrillInNavigationTransitionInfo());
+                        }                        
+                        break;
+                    case "User":
+                        ContentFrame.Navigate(typeof(Panes.UserAccount), null, new DrillInNavigationTransitionInfo());
+                        break;
+                    default:
+                        break;
+                }
             }
 
-    
         }
     }
 }
+

@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="DerekSmart.CustomControls.AddPrinterPrinterDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DerekSmart.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Border Width="325" Height="150" BorderBrush="{StaticResource SystemBaseMediumColor}" BorderThickness="3">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="50" Text="&#xE749;" VerticalAlignment="Center" Margin="30"/>
+                <StackPanel VerticalAlignment="Center">                    
+                    <TextBlock Text="Printer Name" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Name="PrinterName" Text="HP Color LaserJet 3900x" VerticalAlignment="Center"/>
+
+
+
+                    <TextBlock Text="Printer IP" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Name="PrinterIP" Text="0.0.0.0" VerticalAlignment="Center"/>
+
+
+
+                    <TextBlock Text="Printer Location" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Name="PrinterLocation" Text="Derek's Cube" VerticalAlignment="Center"/>   
+                </StackPanel>
+                
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

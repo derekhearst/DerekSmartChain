@@ -7,26 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
-
-    <NavigationView x:Name="MainNavView" PaneDisplayMode="Top" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="MainNavView_ItemInvoked" IsTitleBarAutoPaddingEnabled="False">
-        <NavigationView.MenuItems>
+    <NavigationView x:Name="MainNavView" PaneDisplayMode="Top" IsBackEnabled="False" IsBackButtonVisible="Collapsed" ItemInvoked="MainNavView_ItemInvoked" SelectionFollowsFocus="Enabled" >
+        <NavigationView.MenuItems>            
             <NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="The home page contains your printers." Tag="Home"/>
             <NavigationViewItem Content="Add a Printer" ToolTipService.ToolTip="Add a printer to start printing to it." Icon="Add" Tag="AddPrinter"/>
 
         </NavigationView.MenuItems>
         <NavigationView.FooterMenuItems>
-            <NavigationViewItem Content="User" Icon="OtherUser" Tag="User" />
-            <NavigationViewItem Content="Settings" Icon="Setting" Tag="Settings" Margin="0,0,300,0"/>
+            <NavigationViewItem Content="User" Icon="OtherUser" Tag="User"/>
         </NavigationView.FooterMenuItems>
         <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>
                 <TransitionCollection>
-                    <NavigationThemeTransition/>
+                    <NavigationThemeTransition />
                 </TransitionCollection>
             </Frame.ContentTransitions>
         </Frame>
     </NavigationView>
-    
-    
 </Window>

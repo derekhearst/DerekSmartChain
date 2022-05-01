@@ -12,10 +12,19 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="NewFolder\**" />
+    <Page Remove="NewFolder\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="CustomControls\AddPrinterPrinterDisplay.xaml" />
+    <None Remove="CustomControls\PrinterCarroselItem.xaml" />
     <None Remove="Panes\AddPrinter.xaml" />
-    <None Remove="Panes\HomePage.xaml" />
+    <None Remove="Panes\Home.xaml" />
+    <None Remove="Panes\NoPrinter.xaml" />
     <None Remove="Panes\Settings.xaml" />
-    <None Remove="Panes\User.xaml" />
+    <None Remove="Panes\UserAccount.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,8 +38,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AssyntSoftware.WinUI3Controls" Version="2.0.1" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
+    <PackageReference Include="SharpIpp" Version="0.9.1" />
+    <PackageReference Include="Zeroconf" Version="3.6.11" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -41,7 +54,22 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Panes\User.xaml">
+    <Page Update="Panes\AddPrinter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Panes\UserAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Panes\NoPrinter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Panes\Home.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -51,12 +79,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Panes\AddPrinter.xaml">
+    <PRIResource Remove="NewFolder\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CustomControls\PrinterCarroselItem.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Panes\HomePage.xaml">
+    <Page Update="CustomControls\AddPrinterPrinterDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

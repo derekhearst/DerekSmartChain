@@ -21,8 +21,6 @@ using Windows.Foundation.Collections;
 
 namespace DerekSmart
 {
-
-    
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
@@ -46,6 +44,7 @@ namespace DerekSmart
         {
             m_window = new MainWindow();
             m_window.Activate();
+            
         }
 
         private Window m_window;

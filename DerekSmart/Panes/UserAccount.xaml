@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="DerekSmart.Panes.HomePage"
+    x:Class="DerekSmart.Panes.UserAccount"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DerekSmart.Panes"
@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox Text="dang"/>
+
     </Grid>
 </Page>
