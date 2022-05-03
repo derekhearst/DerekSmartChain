@@ -2,10 +2,14 @@
 using System.Net;
 using System.IO;
 using System.Text.Json;
+using System.Data.OleDb;
  
 
 TcpListener listener = new(433);
 listener.Start();
+List<ClientObject> handlers = new List<ClientObject>();
+
+
 
 
 while (true)
@@ -19,7 +23,15 @@ while (true)
 
 async void HandleConnection(TcpClient client)
 {
-
-    ClientHandler cli = new(client);
-
+    ClientObject cli = new(client);
+    handlers.Add(cli);
+    try
+    {
+        cli.BeginRead();
+    }
+    catch
+    {
+        handlers.Remove(cli);
+    }
+    
 }

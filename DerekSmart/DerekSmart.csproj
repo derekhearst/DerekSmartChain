@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -11,12 +11,6 @@
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="NewFolder\**" />
-    <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="NewFolder\**" />
-    <Page Remove="NewFolder\**" />
-  </ItemGroup>
   <ItemGroup>
     <None Remove="CustomControls\AddPrinterPrinterDisplay.xaml" />
     <None Remove="CustomControls\PrinterCarroselItem.xaml" />
@@ -79,9 +73,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Remove="NewFolder\**" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="CustomControls\PrinterCarroselItem.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,5 +81,8 @@
     <Page Update="CustomControls\AddPrinterPrinterDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConnectionClasses\" />
   </ItemGroup>
 </Project>
