@@ -14,31 +14,24 @@ class ClientObject
 
     StreamReader reader;
     StreamWriter writer;
+    BloggingContext dataBase;
 
 
-
-    public ClientObject(TcpClient client)
+    public ClientObject(TcpClient client, BloggingContext db)
     {            
         cli = client;
         var stream = cli.GetStream();
         reader = new StreamReader(stream);
         writer = new StreamWriter(stream);
+        dataBase = db;
     }
 
     public async void BeginRead()
-    {
-        writer.WriteLine("You have connected to DerekSmart");
-        writer.Flush();
-        Console.WriteLine($"Connected to new client, IP: {cli.Client.RemoteEndPoint}");
-        string receivedData;
-        try
-        {
-            receivedData = await reader.ReadLineAsync();
-        }
-        catch
-        {
-            throw new Exception("Connection terminated by remote connection");
-        }         
+    {        
+        Console.WriteLine($"Connected to new client, IP: {cli.Client.RemoteEndPoint}");       
+
+        string receivedData = await reader.ReadLineAsync();        
+                
         if (receivedData == null) { throw new Exception("No Data Received."); }        
         try
         {
@@ -68,13 +61,32 @@ class ClientObject
     {
         if (req.isPrinter)
         {
-            
-
+            var guid = Guid.NewGuid().ToString();
+            dataBase.Printers.Add(new Printer() { printerSecret = guid, joinedOrg = req.orgName});
+            WriteLine(guid);
         }
         else
-        {
-
+        {           
+            if(dataBase.Users.Where(x => x.email == req.email).ToList().Count() > 0)
+            {
+                throw new Exception("User already exists");
+            };
+            dataBase.Users.Add(new User() { email = req.email, name = req.name, joinedOrg = req.orgName, passsword = req.password });
         }
+    }
+
+    void WriteLine(string line)
+    {
+        try
+        {
+            writer.WriteLine(line);
+            writer.Flush();
+        }
+        catch
+        {
+            throw new Exception("Connection terminated by remote connection");
+        }
+       
     }
 }
 

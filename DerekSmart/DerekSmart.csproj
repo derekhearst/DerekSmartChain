@@ -37,6 +37,7 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
     <PackageReference Include="SharpIpp" Version="0.9.1" />
+    <PackageReference Include="System.Data.OleDb" Version="6.0.0" />
     <PackageReference Include="Zeroconf" Version="3.6.11" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
