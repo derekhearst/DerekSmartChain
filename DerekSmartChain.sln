@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DerekSmart", "DerekSmart\DerekSmart.csproj", "{85C40255-39FD-4E15-A9E9-6C2EA4FCA5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DerekSmart", "DerekSmart\DerekSmart.csproj", "{85C40255-39FD-4E15-A9E9-6C2EA4FCA5F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DerekSmartServer", "DerekSmartServer\DerekSmartServer.csproj", "{1920BF4B-2953-46AC-A25A-B689A84AB35C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DerekSmartServer", "DerekSmartServer\DerekSmartServer.csproj", "{1920BF4B-2953-46AC-A25A-B689A84AB35C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DerekSmartClient", "DerekSmartClient\DerekSmartClient.csproj", "{A583B733-F855-4252-930D-62DB2E938A72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DerekSmartClient", "DerekSmartClient\DerekSmartClient.csproj", "{A583B733-F855-4252-930D-62DB2E938A72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

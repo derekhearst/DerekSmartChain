@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
-internal class ConnectionRequest
+﻿internal class ConnectionRequest
 {
     public bool firstTimeRequest { get; set; }
     public bool isUser { get; set; }

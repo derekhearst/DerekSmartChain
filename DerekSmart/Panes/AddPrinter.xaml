@@ -9,25 +9,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ScrollViewer>
+    <ScrollViewer Loaded="ScrollViewer_Loaded">
         <StackPanel>
-            <TextBlock Text="Printers ready to set up" HorizontalAlignment="Center" FontSize="30"/>
-            <Border BorderBrush="{StaticResource SystemBaseLowColor}" BorderThickness="3" Margin="30" Background="{StaticResource SystemControlAcrylicElementBrush}">
-                <controls:UniformGrid Columns="4" HorizontalAlignment="Center" Margin="50"/>
-            </Border>
-           
-            <TextBlock Text="Cloud Printers" HorizontalAlignment="Center" FontSize="30"/>
-            <Border BorderBrush="{StaticResource SystemBaseLowColor}" BorderThickness="3" Margin="30">
-                <controls:UniformGrid Columns="4" HorizontalAlignment="Center" Margin="50"/>
-            </Border>
-            <controls:UniformGrid HorizontalAlignment="Center" Columns="3">
-                <TextBlock Text="Local Printers" HorizontalAlignment="Center" FontSize="30"/>
-                <ProgressRing x:Name="ProgressIndication" IsActive="False"/>
-                <Button Content="Scan" Width="200" Height="50" Style="{StaticResource AccentButtonStyle}" Click="ScanButton_Click"/>
+            <ProgressBar IsIndeterminate="True" Name="ProgressBarIndication"/>
+            <TextBlock Text="Searching for printers! When you see the printer you want, click on it to continue setup." HorizontalAlignment="Center" FontSize="40" TextWrapping="Wrap" Margin="30,0,30,0" Name="DisplayTextTop"/>
+            
+            
+            <controls:UniformGrid Rows="1" ColumnSpacing="50" Margin="100,20,100,50">
+                <Button Content="Refresh" Width="200" Height="50" Style="{StaticResource AccentButtonStyle}" Click="ScanButton_Click" HorizontalAlignment="Right"/>
+                <TextBox PlaceholderText="Input ip address of printer here." Width="300" AcceptsReturn="False" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Button Content="Add Printer By IP" Width="200" Style="{StaticResource AccentButtonStyle}" Height="50" HorizontalAlignment="Left"/>
             </controls:UniformGrid>
+            <Line/>
 
-            <Border BorderBrush="{StaticResource SystemBaseLowColor}" BorderThickness="3" Margin="30">
-                <GridView HorizontalAlignment="Center" Margin="50" Name="LocalPrinterList">
+            <Border BorderBrush="{StaticResource SystemBaseLowColor}" BorderThickness="0" Margin="30,0,30,0">
+                <GridView HorizontalAlignment="Center" Name="LocalPrinterList">
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
                             <Setter Property="Margin" Value="10, 10, 10, 10"/>

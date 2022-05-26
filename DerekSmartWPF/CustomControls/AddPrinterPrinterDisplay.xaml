@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Border Width="420" Height="150" BorderBrush="{StaticResource SystemBaseLowColor}" BorderThickness="3">
+        <Border Width="420" Height="150" BorderBrush="{StaticResource SystemBaseMediumColor}" BorderThickness="3">
             <StackPanel Orientation="Horizontal">
-                <Image Name="PrinterImage" Width="128" Height="128" Source="Assets/genericPrinter.png"/>
+                <Image Name="PrinterImage" Width="128" Height="128"/>
                 
-                <StackPanel VerticalAlignment="Center" Margin="10">                    
+                <StackPanel VerticalAlignment="Center">                    
                     <TextBlock Text="Printer Name" VerticalAlignment="Center" FontWeight="Bold"/>
                     <TextBlock Name="PrinterName" Text="" VerticalAlignment="Center"/>
 

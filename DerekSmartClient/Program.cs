@@ -1,7 +1,5 @@
-﻿using System.Net.Sockets;
-using System.Net;
-using System.IO;
-using System.Text.Json;
+﻿using System.Net;
+using System.Net.Sockets;
 
 TcpClient client = new();
 IPAddress address = IPAddress.Parse("127.0.0.1");
@@ -16,9 +14,9 @@ while (true)
     sw.Flush();
     Console.WriteLine(await sr.ReadLineAsync());
 }
-  
 
 
 
- 
-    
+
+
+
