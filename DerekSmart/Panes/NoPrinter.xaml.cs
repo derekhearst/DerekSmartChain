@@ -7,19 +7,19 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace DerekSmart.Panes
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class NoPrinter : Page
-    {
-        public NoPrinter()
-        {
-            this.InitializeComponent();
-        }
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+	public sealed partial class NoPrinter : Page
+	{
+		public NoPrinter()
+		{
+			this.InitializeComponent();
+		}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Panes.AddPrinter), null, new DrillInNavigationTransitionInfo());
-        }
-    }
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(Panes.AddPrinter), null, new DrillInNavigationTransitionInfo());
+		}
+	}
 }

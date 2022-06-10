@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+﻿using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
-namespace DerekSmart.CustomControls
+namespace DerekSmartWPF.CustomControls
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class AddPrinterPrinterDisplay : Page
-    {
-       
-        public AddPrinterPrinterDisplay (string printerIP,string pinterLocation,string printerID)
-        {
-            this.InitializeComponent();
-            PrinterIP.Text = printerIP;
-            PrinterLocation.Text = pinterLocation;
-            PrinterName.Text = printerID;
-        }
+	/// <summary>
+	/// Interaction logic for AddPrinterPrinterDisplay.xaml
+	/// </summary>
+	public partial class AddPrinterPrinterDisplay : UserControl
+	{
+		public AddPrinterPrinterDisplay()
+		{
+			InitializeComponent();
+		}
 
-        public void changeImage(ImageSource source)
-        {
-            PrinterImage.Source = source;
-        }
-    }
+		private void Grid_MouseEnter(object sender, MouseEventArgs e)
+		{
+			PrinterName.Text = "enter";
+			RectBackground.Fill = (SolidColorBrush)new BrushConverter().ConvertFromString("#2084e8");
+		}
+
+		private void Grid_MouseLeave(object sender, MouseEventArgs e)
+		{
+			PrinterName.Text = "exit";
+			RectBackground.Fill = new SolidColorBrush(Colors.Transparent);
+
+		}
+
+		private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			PrinterName.Text = "click";
+		}
+	}
 }

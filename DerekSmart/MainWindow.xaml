@@ -5,11 +5,11 @@
     xmlns:local="using:DerekSmart"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
-
-
-    <NavigationView x:Name="MainNavView" PaneDisplayMode="Top" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="MainNavView_ItemInvoked" IsTitleBarAutoPaddingEnabled="False">
+    mc:Ignorable="d"
+    >
+  
+        
+    <NavigationView IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="MainNavView_ItemInvoked" IsTitleBarAutoPaddingEnabled="False">
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Home" Icon="Home" ToolTipService.ToolTip="The home page contains your printers." Tag="Home"/>
             <NavigationViewItem Content="Add a Printer" ToolTipService.ToolTip="Add a printer to start printing to it." Icon="Add" Tag="AddPrinter"/>
@@ -27,6 +27,8 @@
             </Frame.ContentTransitions>
         </Frame>
     </NavigationView>
+   
+        
     
     
 </Window>

@@ -1,22 +1,21 @@
-﻿using System;
+﻿
+using SharpIpp.Models;
+using SharpIpp.Protocol.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpIpp.Model;
-using System.Text.Json;
-using Windows.Storage;
-
 using System.Net;
-
-namespace DerekSmart.DataTypes
+using System.Text.Json;
+using System.Threading.Tasks;
+using Windows.Storage;
+namespace DerekSmartWPF.DataTypes
 {
 	class PrinterObject
 	{
 		public PrinterObject(string ip)
-        {
+		{
 			IPAddress = ip;
-        }
+		}
 
 		public struct SupplyInfo
 		{
@@ -55,38 +54,46 @@ namespace DerekSmart.DataTypes
 		public List<string> IPPSupportedMediaType { get; set; } = new();
 		public List<string> IPPSuppportedOutputBin { get; set; } = new();
 		public List<string> IPPSupportedCollate { get; set; } = new();
-		public List<Finishings> IPPSupportedFinishings { get; set; } = new();
+		public List<SharpIpp.Protocol.Models.Finishings> IPPSupportedFinishings { get; set; } = new();
 		public List<string> IPPSupportedSides { get; set; } = new();
 
 		public async Task DownloadImage()
-        {
+		{
 			if (IPPImageLocation == "N\\A") { return; }
-			Random randomNum = new Random();
-			string tempName = randomNum.Next(10000).ToString();
-			DownloadedImageName = tempName;
 			WebClient webClient = new WebClient();
-			await webClient.DownloadFileTaskAsync(new Uri(IPPImageLocation), tempName);
-			
+			string filename = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(IPPUUID));
+
+
+
+			DownloadedImageName = ApplicationData.Current.LocalCacheFolder.Path + "\\" + filename + ".png";
+			var existingIcons = await ApplicationData.Current.LocalCacheFolder.GetFilesAsync();
+			if (existingIcons.Any(x => x.Name.Equals(DownloadedImageName, StringComparison.OrdinalIgnoreCase)))
+			{
+				return;
+			}
+
+			await webClient.DownloadFileTaskAsync(new Uri(IPPImageLocation), DownloadedImageName);
+
 		}
 
 		public async Task RefreshValues()
 		{
-						
+
 			GetPrinterAttributesRequest req = new()
 			{
 				PrinterUri = new($"ipp://{IPAddress}:631"),
 			};
 			SharpIpp.SharpIppClient ippCli = new();
-			GetPrinterAttributesResponse response = null;
+			GetPrinterAttributesResponse response;
 			try
 			{
-				await ippCli.GetPrinterAttributesAsync(req);
+				response = await ippCli.GetPrinterAttributesAsync(req);
 			}
-            catch
-            {
+			catch
+			{
 				Console.WriteLine("Unable to communicate with " + IPAddress);
 				return;
-            }
+			}
 
 			if (response is null) { return; }
 			IPPSupportedMedia.Clear();
@@ -176,7 +183,7 @@ namespace DerekSmart.DataTypes
 
 					default:
 						break;
-				}				
+				}
 			}
 			return;
 		}

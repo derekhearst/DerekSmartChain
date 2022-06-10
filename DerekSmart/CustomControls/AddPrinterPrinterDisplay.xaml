@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid PointerEntered="Grid_PointerEntered" PointerExited="Grid_PointerExited" PointerPressed="Grid_PointerPressed">
         <Border Width="420" Height="150" BorderBrush="{StaticResource SystemBaseLowColor}" BorderThickness="3">
             <StackPanel Orientation="Horizontal">
                 <Image Name="PrinterImage" Width="128" Height="128" Source="Assets/genericPrinter.png"/>

@@ -10,9 +10,9 @@ StreamReader sr = new StreamReader(stream);
 
 while (true)
 {
-    sw.WriteLine(Console.ReadLine());
-    sw.Flush();
-    Console.WriteLine(await sr.ReadLineAsync());
+	sw.WriteLine(Console.ReadLine());
+	sw.Flush();
+	Console.WriteLine(await sr.ReadLineAsync());
 }
 
 

@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DerekSmartWPF"
+        xmlns:pages="clr-namespace:DerekSmartWPF.Pages"
+        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="DerekSmart" Height="450" Width="800" Style="{DynamicResource CustomWindowStyle}">
 
-    </Grid>
+    <TabControl>
+        <TabItem Header="Home">
+            <pages:HomePage/>
+
+        </TabItem>
+        <TabItem Header="Add A Printer">
+            <pages:AddPrinterPage/>
+        </TabItem>
+        <TabItem Header="User / Organizaion">
+            <pages:UsersAndOrgsPage/>
+        </TabItem>
+        <TabItem Header="Settings">
+            <pages:SettingsPage/>
+        </TabItem>
+    </TabControl>
+
+    
 </Window>
