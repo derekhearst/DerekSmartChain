@@ -5,26 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DerekSmartWPFUI.CustomControls"
 			 xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
-			 Style="{StaticResource UiPage}"
              mc:Ignorable="d">
-   
-		<StackPanel Orientation="Horizontal">
-			<Image Height="128" Width="128" Source="/Assets/genericPrinter.png"/>			
-			<StackPanel VerticalAlignment="Center" Margin="10">
-				<StackPanel Orientation="Horizontal" Margin="5">
-					<TextBlock Text="Printer Name : "  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-					<TextBlock Name="PrinterName" Text="Temp"  Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
-				</StackPanel>
-				<StackPanel Orientation="Horizontal"  Margin="5">
-					<TextBlock Text="Printer IP : "  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-					<TextBlock Name="PrinterIP" Text="Temp"  Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
-				</StackPanel>
-				<StackPanel Orientation="Horizontal"  Margin="5">
-					<TextBlock Text="Printer Type : "  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-					<TextBlock Name="PrinterType" Text="Temp" Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
-				</StackPanel>
+
+	<StackPanel Orientation="Horizontal">
+		<Image Height="128" Width="128" Source="/Assets/genericPrinter.png"/>
+		<StackPanel VerticalAlignment="Center" Margin="10">
+			<StackPanel Orientation="Horizontal" Margin="5">
+				<TextBlock Text="Printer Name : " Width="100" TextAlignment ="Right"  Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+				<TextBlock Name="PrinterName" Text="Temp"  Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal"  Margin="5">
+				<TextBlock Text="Printer IP : " Width="100" TextAlignment ="Right" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+				<TextBlock Name="PrinterIP" Text="Temp"  Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal"  Margin="5">
+				<TextBlock Text="Printer Type : " Width="100" TextAlignment ="Right" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+				<TextBlock Name="PrinterType" Text="Temp" Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
 			</StackPanel>
 		</StackPanel>
 
-	
+		<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Cyan : " Width="65" TextAlignment ="Right"/>
+				<ProgressBar Orientation="Vertical" Value="100" Height="20" Width="100" Foreground="Cyan"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Yello : "  Width="65" TextAlignment ="Right"/>
+				<ProgressBar Value="100" Orientation="Vertical" Height="20" Width="100" Foreground="Yellow"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Magenta : "  Width="65" TextAlignment ="Right"/>
+				<ProgressBar Value="100" Orientation="Vertical"  Height="20" Width="100" Foreground="Magenta"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Black : "  Width="65" TextAlignment ="Right"/>
+				<ProgressBar Value="100" Orientation="Vertical"  Height="20" Width="100" Foreground="Black"/>
+			</StackPanel>
+		</StackPanel>
+
+	</StackPanel>
 </UserControl>

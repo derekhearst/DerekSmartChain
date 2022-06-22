@@ -5,18 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DerekSmartWPFUI.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      
+	  xmlns:cc="clr-namespace:DerekSmartWPFUI.CustomControls"
 	  xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
 	  Style="{StaticResource UiPage}"
       Title="AddPrinter">
 
-    <StackPanel Margin="30">
+    <StackPanel Loaded="StackPanel_Loaded">
+		<DockPanel>
+			<Button Content="Go Back" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="Button_Click"/>
+			<Button Content="Add Printer by IP" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+			<ProgressBar IsIndeterminate="True" Margin="30,0,30,0"/>
+		</DockPanel>
 		
-		<ProgressBar IsIndeterminate="True"/>
-		<Button Content="The printer I want isn't listed."/>
-		<StackPanel>
-			<wpfui:CardAction/>
-		</StackPanel>
-
+		<TextBlock Text="Printers" Margin="0,20,0,0" FontSize="30"/>
+		<ScrollViewer>
+			<ListBox x:Name="foundPrinterList" >
+				<wpfui:CardAction>
+					<cc:PrinterInfo ForceCursor="True" Cursor="Hand" Margin="10"/>
+				</wpfui:CardAction>
+			</ListBox>
+		</ScrollViewer>
+		
 	</StackPanel>
 </Page>

@@ -7,11 +7,10 @@
 	  Style="{StaticResource UiPage}"
 	  xmlns:local="clr-namespace:DerekSmartWPFUI.Pages"
 	  
-	  mc:Ignorable="d" 
-	  d:DesignHeight="450" d:DesignWidth="800"
+	  mc:Ignorable="d" 	  
 	  Title="Dashboard">
 
-	<StackPanel Margin="30">
+	<StackPanel>
 		<TextBlock Text="Welcome To DerekSmart" FontSize="30" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center"/>
 		<StackPanel>
 			<wpfui:Button Icon="Print24"   Content="Print"  Background="#4b7cba" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}" />

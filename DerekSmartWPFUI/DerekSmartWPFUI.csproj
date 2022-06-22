@@ -21,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SharpIpp" Version="0.10.0" />
     <PackageReference Include="WPF-UI" Version="1.2.7" />
+    <PackageReference Include="Zeroconf" Version="3.6.11" />
   </ItemGroup>
 
 </Project>

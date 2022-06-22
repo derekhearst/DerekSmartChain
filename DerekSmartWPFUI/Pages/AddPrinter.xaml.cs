@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Zeroconf;
+using WPFUI;
 namespace DerekSmartWPFUI.Pages
 {
 	/// <summary>
@@ -24,5 +25,43 @@ namespace DerekSmartWPFUI.Pages
 		{
 			InitializeComponent();
 		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Printers());			
+		}
+
+		private async void StackPanel_Loaded(object sender, RoutedEventArgs e)
+		{
+			await SearchForPrinters();
+
+		}
+
+		private async Task SearchForPrinters()
+		{
+			var mytimeSpan = new TimeSpan(0, 0, 10);
+			var results = await ZeroconfResolver.ResolveAsync("_ipp._tcp.local.", callback: CallBackMethod, scanTime: mytimeSpan);
+		}
+		
+		private async void CallBackMethod(IZeroconfHost host)
+		{
+			var printerObj = new DataTypes.PrinterObject(host.IPAddress);
+			try
+			{
+				await printerObj.RefreshValues();
+			}
+			catch
+			{
+				return;
+			}
+		
+			foundPrinterList.Dispatcher.Invoke(new Action(() =>
+			{
+				var cardAction = new WPFUI.Controls.CardAction().Content= new CustomControls.PrinterInfo();
+				
+				foundPrinterList.Items.Add(cardAction);
+			}));		
+		}
+
 	}
 }

@@ -11,5 +11,11 @@ namespace DerekSmartWPFUI.Pages
 		{
 			InitializeComponent();
 		}
+
+		private void CardAction_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new AddPrinter());
+			
+		}
 	}
 }
