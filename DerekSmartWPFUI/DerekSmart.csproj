@@ -10,11 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\1f5a8.png" />
     <None Remove="Assets\genericPrinter.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\1f5a8.ico" />
+    <Content Include="Assets\1f5a8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\genericPrinter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

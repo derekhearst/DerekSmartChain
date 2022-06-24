@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace DerekSmartWPFUI.Pages
+namespace DerekSmart.Pages
 {
 	/// <summary>
 	/// Interaction logic for Settings.xaml

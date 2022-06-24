@@ -13,28 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DerekSmart.CustomControls
+namespace DerekSmart.Pages
 {
 	/// <summary>
-	/// Interaction logic for PrinterInfo.xaml
+	/// Interaction logic for PrintingPage.xaml
 	/// </summary>
-	public partial class PrinterInfo : UserControl
+	public partial class PrintingPage : Page
 	{
-
-		public DataTypes.PrinterObject PrinterObject { get; set; }
-		public PrinterInfo()
+		public PrintingPage()
 		{
 			InitializeComponent();
 		}
-
-		public void AttachPrinterObject(DataTypes.PrinterObject obj)
-		{
-			PrinterObject = obj;
-
-			PrinterName.Text = obj.IPPName;
-			PrinterIP.Text = obj.IPAddress;
-			PrinterType.Text = obj.IPPUUID;
-		}
-
 	}
 }

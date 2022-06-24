@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using Windows.Storage;
-namespace DerekSmartWPFUI.DataTypes
+namespace DerekSmart.DataTypes
 {
 	public class PrinterObject
 	{
@@ -88,15 +88,10 @@ namespace DerekSmartWPFUI.DataTypes
 			};
 			SharpIpp.SharpIppClient ippCli = new();
 			GetPrinterAttributesResponse response;
-			try
-			{
-				response = await ippCli.GetPrinterAttributesAsync(req);
-			}
-			catch
-			{
-				Console.WriteLine("Unable to communicate with " + IPAddress);
-				return;
-			}
+			
+			response = await ippCli.GetPrinterAttributesAsync(req);
+			
+			
 
 			if (response is null) { return; }
 			IPPSupportedMedia.Clear();

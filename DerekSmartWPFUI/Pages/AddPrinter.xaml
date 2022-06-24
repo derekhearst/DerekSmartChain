@@ -1,21 +1,26 @@
-﻿<Page x:Class="DerekSmartWPFUI.Pages.AddPrinter"
+﻿<Page x:Class="DerekSmart.Pages.AddPrinter"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DerekSmartWPFUI.Pages"
+      xmlns:local="clr-namespace:DerekSmart.Pages"
       mc:Ignorable="d" 
       
-	  xmlns:cc="clr-namespace:DerekSmartWPFUI.CustomControls"
+	  xmlns:cc="clr-namespace:DerekSmart.CustomControls"
 	  xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
 	  Style="{StaticResource UiPage}"
       Title="AddPrinter">
 
     <StackPanel Loaded="StackPanel_Loaded">
 		<DockPanel>
-			<Button Content="Go Back" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="Button_Click"/>
+			<Button Content="Go Back" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="BackButtonClick"/>
 			<Button Content="Add Printer by IP" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
-			<ProgressBar IsIndeterminate="True" Margin="30,0,30,0"/>
+			<Grid>
+				<Button Content="Refresh Results" Margin="30,0,30,0" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="refreshButton" Click="refreshButton_Click"/>
+				<ProgressBar IsIndeterminate="True" Margin="30,0,30,0" Name="progressBarElement" Visibility="Visible"/>
+			</Grid>
+			
+			
 		</DockPanel>
 		
 		<TextBlock Text="Printers" Margin="0,20,0,0" FontSize="30"/>

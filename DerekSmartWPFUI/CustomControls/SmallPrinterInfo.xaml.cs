@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace DerekSmart.CustomControls
 {
 	/// <summary>
-	/// Interaction logic for PrinterInfo.xaml
+	/// Interaction logic for SmallPrinterInfo.xaml
 	/// </summary>
-	public partial class PrinterInfo : UserControl
+	public partial class SmallPrinterInfo : UserControl
 	{
-
-		public DataTypes.PrinterObject PrinterObject { get; set; }
-		public PrinterInfo()
+		public SmallPrinterInfo()
 		{
 			InitializeComponent();
 		}
-
-		public void AttachPrinterObject(DataTypes.PrinterObject obj)
-		{
-			PrinterObject = obj;
-
-			PrinterName.Text = obj.IPPName;
-			PrinterIP.Text = obj.IPAddress;
-			PrinterType.Text = obj.IPPUUID;
-		}
-
 	}
 }

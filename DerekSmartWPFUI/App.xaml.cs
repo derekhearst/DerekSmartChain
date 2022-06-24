@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace DerekSmartWPFUI
+namespace DerekSmart
 {
 	/// <summary>
 	/// Interaction logic for App.xaml

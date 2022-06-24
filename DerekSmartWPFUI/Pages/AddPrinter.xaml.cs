@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zeroconf;
 using WPFUI;
-namespace DerekSmartWPFUI.Pages
+namespace DerekSmart.Pages
 {
 	/// <summary>
 	/// Interaction logic for AddPrinter.xaml
@@ -26,7 +26,7 @@ namespace DerekSmartWPFUI.Pages
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void BackButtonClick(object sender, RoutedEventArgs e)
 		{
 			NavigationService.Navigate(new Printers());			
 		}
@@ -39,8 +39,16 @@ namespace DerekSmartWPFUI.Pages
 
 		private async Task SearchForPrinters()
 		{
+			progressBarElement.Visibility = Visibility.Visible;
+			refreshButton.Visibility = Visibility.Collapsed;
+			foundPrinterList.Items.Clear();
+			
 			var mytimeSpan = new TimeSpan(0, 0, 10);
-			var results = await ZeroconfResolver.ResolveAsync("_ipp._tcp.local.", callback: CallBackMethod, scanTime: mytimeSpan);
+			await ZeroconfResolver.ResolveAsync("_ipp._tcp.local.", callback: CallBackMethod, scanTime: mytimeSpan);
+
+			progressBarElement.Visibility = Visibility.Collapsed;
+			refreshButton.Visibility = Visibility.Visible;
+
 		}
 		
 		private async void CallBackMethod(IZeroconfHost host)
@@ -57,11 +65,17 @@ namespace DerekSmartWPFUI.Pages
 		
 			foundPrinterList.Dispatcher.Invoke(new Action(() =>
 			{
-				var cardAction = new WPFUI.Controls.CardAction().Content= new CustomControls.PrinterInfo();
+				var printerInfo = new CustomControls.PrinterInfo();
+				var cardAction = new WPFUI.Controls.CardAction();
+				cardAction.Content = printerInfo;
 				
 				foundPrinterList.Items.Add(cardAction);
 			}));		
 		}
 
+		private void refreshButton_Click(object sender, RoutedEventArgs e)
+		{
+			SearchForPrinters();
+		}
 	}
 }

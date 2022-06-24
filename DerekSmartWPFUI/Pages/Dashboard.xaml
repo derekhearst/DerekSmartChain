@@ -1,11 +1,11 @@
-﻿<Page x:Class="DerekSmartWPFUI.Pages.Dashboard"
+﻿<Page x:Class="DerekSmart.Pages.Dashboard"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	  xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
 	  Style="{StaticResource UiPage}"
-	  xmlns:local="clr-namespace:DerekSmartWPFUI.Pages"
+	  xmlns:local="clr-namespace:DerekSmart.Pages"
 	  
 	  mc:Ignorable="d" 	  
 	  Title="Dashboard">
@@ -13,9 +13,9 @@
 	<StackPanel>
 		<TextBlock Text="Welcome To DerekSmart" FontSize="30" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center"/>
 		<StackPanel>
-			<wpfui:Button Icon="Print24"   Content="Print"  Background="#4b7cba" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}" />
-			<wpfui:Button Icon="Scan24"  Content="Scan"  Background="#a75e8f" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}"/>
-			<wpfui:Button Icon="Phone24"  Content="Help &amp; Support"  Background="#e5a945" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}"/>
+			<wpfui:Button Icon="Print24"   Content="Print"  Background="#4b7cba" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}" Click="PrintButton" />
+			<wpfui:Button Icon="Scan24"  Content="Scan"  Background="#a75e8f" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}" Click="ScanButton"/>
+			<wpfui:Button Icon="Phone24"  Content="Help &amp; Support"  Background="#e5a945" FontSize="32" Foreground="{DynamicResource TextFillColorPrimaryBrush}" IconForeground="{DynamicResource TextFillColorPrimaryBrush}" Click="HelpButton"/>
 		</StackPanel>
 	</StackPanel>
 </Page>

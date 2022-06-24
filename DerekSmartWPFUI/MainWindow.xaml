@@ -1,9 +1,9 @@
-﻿<Window x:Class="DerekSmartWPFUI.MainWindow"
+﻿<Window x:Class="DerekSmart.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:pages="clr-namespace:DerekSmartWPFUI.Pages"
+		xmlns:pages="clr-namespace:DerekSmart.Pages"
 		xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
 		Style="{StaticResource UiWindow}"
 		WindowStartupLocation="CenterScreen"
@@ -15,7 +15,7 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		
-		<wpfui:TitleBar Title="DerekSmart - Printers Simplified" Icon="C:\Users\derek\source\repos\DerekSmartChain\DerekSmartWPFUI\Assets\1f5a8.png" Grid.Row="0">
+		<wpfui:TitleBar Title="DerekSmart - Printers Simplified" Icon="/Assets/1f5a8.png" Grid.Row="0">
 			<wpfui:TitleBar.Tray>
 				<wpfui:NotifyIcon FocusOnLeftClick="True" MenuOnRightClick="True" TooltipText="WPF UI"/>
 			</wpfui:TitleBar.Tray>
@@ -31,8 +31,11 @@
 				<wpfui:NavigationStore.Items>
 					<wpfui:NavigationItem Content="Home" Icon="Home24" Page="{x:Type pages:Dashboard}" PageTag="dashboard"/>
 					<wpfui:NavigationItem Content="Printers" Icon="Print24" Page="{x:Type pages:Printers}" PageTag="addPrinter"/>
+					<wpfui:NavigationItem Content="Printing" Icon="Document24" Page="{x:Type pages:PrintingPage}" PageTag="printing"/>
+					<wpfui:NavigationItem Content="Scanning" Icon="Scan24" Page="{x:Type pages:Scanning}" PageTag="scanning"/>
 				</wpfui:NavigationStore.Items>
 				<wpfui:NavigationStore.Footer>
+					<wpfui:NavigationItem Content="User" Icon="Person24" Page="{x:Type pages:UserAccount}" PageTag="user"/>
 					<wpfui:NavigationItem Content="Settings" Icon="Settings24" Page="{x:Type pages:Settings}" PageTag="settings"/>
 				</wpfui:NavigationStore.Footer>
 			</wpfui:NavigationStore>

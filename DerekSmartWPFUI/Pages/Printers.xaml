@@ -1,11 +1,11 @@
-﻿<Page x:Class="DerekSmartWPFUI.Pages.Printers"
+﻿<Page x:Class="DerekSmart.Pages.Printers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"	  
-      xmlns:local="clr-namespace:DerekSmartWPFUI"
+      xmlns:local="clr-namespace:DerekSmart"
 	  
-	  xmlns:cc="clr-namespace:DerekSmartWPFUI.CustomControls"
+	  xmlns:cc="clr-namespace:DerekSmart.CustomControls"
 	  xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
 	  Style="{StaticResource UiPage}"
       mc:Ignorable="d" 
@@ -18,7 +18,7 @@
 			<StackPanel>
 				
 				<TextBlock Text="Cloud Printers"  FontSize="30"/>
-				<StackPanel Background="{DynamicResource ControlFillColorDefaultBrush}">
+				<StackPanel>
 					<TextBlock Text="No Printers Located" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
 					<wpfui:CardAction Visibility="Collapsed">
 						<cc:PrinterInfo/>

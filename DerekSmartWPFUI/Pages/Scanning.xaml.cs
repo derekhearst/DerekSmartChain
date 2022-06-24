@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DerekSmartWPFUI.CustomControls
+namespace DerekSmart.Pages
 {
 	/// <summary>
-	/// Interaction logic for PrinterCardAction.xaml
+	/// Interaction logic for Scanning.xaml
 	/// </summary>
-	public partial class PrinterCardAction : UserControl
+	public partial class Scanning : Page
 	{
-		public PrinterCardAction()
+		public Scanning()
 		{
 			InitializeComponent();
 		}

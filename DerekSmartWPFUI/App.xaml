@@ -1,8 +1,8 @@
-﻿<Application x:Class="DerekSmartWPFUI.App"
+﻿<Application x:Class="DerekSmart.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
-             xmlns:local="clr-namespace:DerekSmartWPFUI"
+             xmlns:local="clr-namespace:DerekSmart"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

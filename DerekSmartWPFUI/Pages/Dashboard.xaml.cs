@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-
-namespace DerekSmartWPFUI.Pages
+using WPFUI.Controls;
+namespace DerekSmart.Pages
 {
 	/// <summary>
 	/// Interaction logic for Dashboard.xaml
@@ -13,9 +13,21 @@ namespace DerekSmartWPFUI.Pages
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
+		
 
+		private void PrintButton(object sender, RoutedEventArgs e)
+		{
+			((NavigationStore) get ).Navigate("printing");
+		}
+
+		private void ScanButton(object sender, RoutedEventArgs e)
+		{
+			NavigationService.Navigate(new Scanning());
+		}
+
+		private void HelpButton(object sender, RoutedEventArgs e)
+		{
+			
 		}
 	}
 }
