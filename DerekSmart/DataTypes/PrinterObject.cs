@@ -1,15 +1,18 @@
-﻿using SharpIpp.Model;
+﻿
+using SharpIpp.Models;
+using SharpIpp.Protocol.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 using Windows.Storage;
-
 namespace DerekSmart.DataTypes
 {
-	class PrinterObject
+	public class PrinterObject
 	{
 		public PrinterObject(string ip)
 		{
@@ -30,7 +33,7 @@ namespace DerekSmart.DataTypes
 		//Network Info
 		public string IPAddress { get; set; } = "N\\A";
 		public bool CloudEnabled { get; set; } = false;
-		public string DownloadedImageName { get; set; } = "N\\A";
+		public Image PictureOfPrinter { get; set; }
 
 
 		//General Info
@@ -53,27 +56,28 @@ namespace DerekSmart.DataTypes
 		public List<string> IPPSupportedMediaType { get; set; } = new();
 		public List<string> IPPSuppportedOutputBin { get; set; } = new();
 		public List<string> IPPSupportedCollate { get; set; } = new();
-		public List<Finishings> IPPSupportedFinishings { get; set; } = new();
+		public List<SharpIpp.Protocol.Models.Finishings> IPPSupportedFinishings { get; set; } = new();
 		public List<string> IPPSupportedSides { get; set; } = new();
+
+		//All the things
+
+		public List<IppAttribute> AllAttributes { get; set; } = new();
 
 		public async Task DownloadImage()
 		{
-			if (IPPImageLocation == "N\\A") { return; }
-			WebClient webClient = new WebClient();
-			string filename = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(IPPUUID));
+			try
+			{
+				if (IPPImageLocation == "N\\A") { return; }
+				MemoryStream ms = new MemoryStream(await new WebClient().DownloadDataTaskAsync(new Uri(IPPImageLocation)));
+				PictureOfPrinter = Image.FromStream(ms);
+			}
 
-
-
-			DownloadedImageName = ApplicationData.Current.LocalCacheFolder.Path + "\\" + filename + ".png";
-			var existingIcons = await ApplicationData.Current.LocalCacheFolder.GetFilesAsync();
-			if (existingIcons.Any(x => x.Name.Equals(DownloadedImageName, StringComparison.OrdinalIgnoreCase)))
+			catch
 			{
 				return;
 			}
-
-			await webClient.DownloadFileTaskAsync(new Uri(IPPImageLocation), DownloadedImageName);
-
 		}
+			
 
 		public async Task RefreshValues()
 		{
@@ -83,16 +87,11 @@ namespace DerekSmart.DataTypes
 				PrinterUri = new($"ipp://{IPAddress}:631"),
 			};
 			SharpIpp.SharpIppClient ippCli = new();
-			GetPrinterAttributesResponse response = null;
-			try
-			{
-				response = await ippCli.GetPrinterAttributesAsync(req);
-			}
-			catch
-			{
-				Console.WriteLine("Unable to communicate with " + IPAddress);
-				return;
-			}
+			GetPrinterAttributesResponse response;
+			
+			response = await ippCli.GetPrinterAttributesAsync(req);
+			
+			
 
 			if (response is null) { return; }
 			IPPSupportedMedia.Clear();
@@ -103,6 +102,9 @@ namespace DerekSmart.DataTypes
 			IPPSupportedFinishings.Clear();
 			IPPSupportedSides.Clear();
 			IPPSupplyValues.Clear();
+			AllAttributes.Clear();
+
+			AllAttributes = response.Sections[1].Attributes;
 
 			foreach (IppAttribute at in response.Sections[1].Attributes)
 			{
