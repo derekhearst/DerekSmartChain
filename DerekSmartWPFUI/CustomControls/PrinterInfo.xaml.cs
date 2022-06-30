@@ -34,6 +34,7 @@ namespace DerekSmart.CustomControls
 			PrinterName.Text = obj.IPPName;
 			PrinterIP.Text = obj.IPAddress;
 			PrinterType.Text = obj.IPPUUID;
+			Console.WriteLine("yes");
 		}
 
 	}
