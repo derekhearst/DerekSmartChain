@@ -17,7 +17,7 @@ namespace DerekSmart.Pages
 
 		private void PrintButton(object sender, RoutedEventArgs e)
 		{
-			((NavigationStore) get ).Navigate("printing");
+			
 		}
 
 		private void ScanButton(object sender, RoutedEventArgs e)
